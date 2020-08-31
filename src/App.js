@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {jsPDF} from "jspdf";
+const App = ()=>{
+  function generatePdf(){
+    var doc = new jsPDF('h1', 'pt');
+      
+    doc.text(20, 20, 'This is the first title.')
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    doc.setFont('helvetica')
+    
+    doc.text(20, 60, 'This is the second title.')
+
+    doc.setFont('times new roman')
+   
+    doc.text(20, 100, 'This is the thrid title.')      
+    doc.save('demo.pdf')
+  }
+ 
+  return(
+    <div>
+        <button onClick={generatePdf}>Generate PDF</button>
+      </div>
+  )
 }
-
 export default App;
